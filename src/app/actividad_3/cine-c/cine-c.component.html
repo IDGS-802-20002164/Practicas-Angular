@@ -1,0 +1,45 @@
+<div class="card">
+    <h1>Formulario de Compra</h1>
+      <label for="nombre">Nombre:</label>
+      <mat-form-field>
+        <input matInput [(ngModel)]="nombre" type="text" placeholder="Nombre">
+    </mat-form-field><br><br>
+
+      <label for="cantidad-compradores">Cantidad de Compradores:</label>
+      <mat-form-field>
+        <input matInput [(ngModel)]="cantidadC" type="number" placeholder="Cantidad">
+    </mat-form-field><br><br>
+      
+
+      <label>Tarjeta cinepolis:</label>
+      <mat-radio-group name="opciones" [(ngModel)]="tarjetaseleccion" >
+        <mat-radio-button *ngFor="let op of tarjeta" [value]="op" name="opciones" style="margin: 10px;">
+        {{op}}
+        </mat-radio-button>
+        </mat-radio-group>
+      
+      <br>  
+      <label for="cantidad-boletos">Cantidad de Boletos:</label>
+      <mat-form-field>
+        <input matInput [(ngModel)]="cantidadB" type="number" placeholder="Cantidad">
+    </mat-form-field><br><br>
+
+    <button mat-raised-button color="primary" (click)="calcular()">Calcular</button>
+    
+  </div>
+
+  <div class="card">
+    <h1>Compra</h1>
+      <label for="nombre">Nombre:</label>
+      <label for="nombre">{{nombre}}</label>
+      <br>
+      <label for="nombre">Total a pagar:</label>
+      <label for="nombre">{{total}}</label>
+      <br>
+      <label for="nombre">Cantidad de boletos:</label>
+      <label for="nombre">{{cantidadB}}</label>
+
+      
+    
+    
+  </div>

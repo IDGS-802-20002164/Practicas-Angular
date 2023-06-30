@@ -1,0 +1,58 @@
+<div class="contenedor">
+
+    <h3>Calcular resistencias</h3>
+    <select name="cbmbBanda1" [(ngModel)]="seleccionado1" (change)="calcularValor()">
+        <option [value]="item" *ngFor="let item of list1 let indice1=index;" [style.background-color]="item">{{item}}
+        </option>
+    </select>
+    <br><br>
+    <select name="cbmbBanda1" [(ngModel)]="seleccionado2" (change)="calcularValor()">
+        <option [value]="item" *ngFor="let item of list1 let indice1=index;" [style.background-color]="item">{{item}}
+        </option>
+    </select>
+    <br><br>
+    <select name="cbmbBanda1" [(ngModel)]="seleccionado3" (change)="calcularValor()">
+        <option [value]="item" *ngFor="let item of list1 let indice1=index;" [style.background-color]="item">{{item}}
+        </option>
+    </select>
+    <br><br>
+
+    <mat-radio-group name="opciones" [(ngModel)]="colorSelec" >
+        <mat-radio-button *ngFor="let op of colorExt" [value]="op" name="opciones" style="margin: 10px;">
+        {{op}}
+        </mat-radio-button>
+    </mat-radio-group>
+
+    <br><br>
+
+    <table>
+        <thead>
+          <tr>
+            <th>Vanda 1</th>
+            <th>Vanda 2</th>
+            <th>Vanda 3</th>
+            <th>Valor</th>
+            <th>Valor +</th>
+            <th>Valor -</th>
+          </tr>
+        </thead>
+        <tbody>
+        
+          <tr>
+            <td [style.background-color]="seleccionado1"> {{seleccionado1}} </td>
+            <td [style.background-color]="seleccionado2">{{seleccionado2}}</td>
+            <td [style.background-color]="seleccionado3">{{seleccionado3}}</td>
+            <td>{{resultado}}</td>
+            <td>{{resMas}}</td>
+            <td>{{resMenos}}</td>
+          </tr>
+         
+        </tbody>
+      </table>
+      
+      
+      
+  
+    <button mat-raised-button color="primary" (click)="calcularValor()">Calcular</button>
+
+</div>
