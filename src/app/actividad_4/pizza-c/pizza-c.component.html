@@ -1,0 +1,107 @@
+<div class="row">
+  <div class="col-3">
+    <br>
+    <div class="card">
+      <form (ngSubmit)="onSubmit()" [formGroup]="pizzasForm" class="pizza-form">
+        <div class="form-group">
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" name="nombre" formControlName="nombre" class="form-control">
+        </div>
+        <br>
+        <div class="form-group">
+          <label>Tamaño de la pizza:</label>
+          <br>
+          <div class="radio-group">
+            <br>
+            <label for="chica">
+              <input type="radio" id="chica" name="tamanio" value="Chica" formControlName="tamanio">Chica $40
+            </label>
+            <br>
+            <label for="mediana">
+              <input type="radio" id="mediana" name="tamanio" value="Mediana" formControlName="tamanio">Mediana $80
+            </label>
+            <br>
+            <label for="grande">
+              <input type="radio" id="grande" name="tamanio" value="Grande" formControlName="tamanio">Grande $120
+            </label>
+          </div>
+        </div>
+        <br><br>
+        <div class="form-group">
+          <label for="direccion">Dirección:</label>
+          <input type="text" id="direccion" name="direccion" formControlName="direccion" class="form-control">
+        </div>
+        <br>
+        <div class="form-group">
+          <label>Ingredientes:</label>
+          <br>
+          <br>
+          <input type="checkbox" id="jamon" name="jamon" [formControl]="jamonControl"> Jamon $10
+          <br>
+          <input type="checkbox" id="pina" name="pina" [formControl]="pinaControl"> Piña $10
+          <br>
+          <input type="checkbox" id="champinones" name="champinones" [formControl]="champinonesControl"> Champiñones $10
+        </div>
+        <br><br>
+        <div class="form-group">
+          <label for="telefono">Teléfono:</label>
+          <input type="text" id="telefono" name="telefono" formControlName="telefono" class="form-control">
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="nPizzas">No. Pizzas:</label>
+          <input type="number" id="nPizzas" name="nPizzas" formControlName="numPizzas" class="form-control">
+        </div>
+        <br>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Agregar</button>
+          <button type="button" class="btn btn-primary float-end" (click)="confirmarPedido()">Terminar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="col-6">
+    <br>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Tamaño</th>
+          <th>Ingredientes</th>
+          <th>No. Pizzas</th>
+          <th>Subtotal</th>
+          <th>Accciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pizza of pizzas;let i = index">
+          <td>{{ pizza.tamanio }}</td>
+          <td>{{ pizza.ingredientes.join(', ') }}</td>
+          <td>{{ pizza.numPizzas }}</td>
+          <td>{{ pizza.subTotal }}</td>
+          <td>
+            <button type="button" class="btn btn-danger" (click)="eliminarPizza(i)">Eliminar</button>
+            <button *ngIf="edicionHabilitada" class="btn btn-warning" (click)="modificarPizza(i)">Modificar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-3">
+    <br>
+    <button *ngIf="edicionHabilitada" class="btn btn-warning" (click)="terminarM()">Finalizar edicion</button>
+    <br>
+    <br>
+    <div class="card">
+      <h3>Ventas del día:</h3>
+      <ul>
+        <li *ngFor="let pizza of pizzasT">
+          <h4>Nombre: {{ pizza.nombre }}</h4>
+          <p>Total: {{ pizza.subTotal }}</p>
+        </li>
+      </ul>
+      <h3>Ventas totales del día: {{ calcularTotalVendido() }}</h3>
+    </div>
+  </div>
+</div>

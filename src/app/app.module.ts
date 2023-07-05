@@ -8,12 +8,15 @@ import { DistanciaModModule } from './ejercicios/distancia-b/distancia-mod/dista
 import {ResistenciaMModule} from './actividad_2/resistencia-m/resistencia-m.module';
 import { CineMModule } from './actividad_3/cine-m/cine-m.module'
 import { MenuComponent } from './menu/menu.component';
+import { PizzaMModule } from './actividad_4/pizza-m/pizza-m.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
+    
  
   ],
   imports: [
@@ -23,6 +26,9 @@ import { MenuComponent } from './menu/menu.component';
     DistanciaModModule,
     ResistenciaMModule,
     CineMModule,
+    PizzaMModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
